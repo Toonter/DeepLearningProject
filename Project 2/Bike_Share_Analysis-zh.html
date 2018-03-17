@@ -11858,7 +11858,7 @@ div#notebook {
         <span class="c1">## 待办：对 DictReader 对象使用函数     ##</span>
         <span class="c1">## 从而读取数据文件的第一条骑行记录并将其存储为一个变量     ##</span>
         <span class="c1">## 见 https://docs.python.org/3/library/csv.html#reader-objects ##</span>
-        <span class="n">first_trip</span> <span class="o">=</span> <span class="n">trip_reader</span><span class="o">.</span><span class="fm">__next__</span><span class="p">()</span>
+        <span class="n">first_trip</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">trip_reader</span><span class="p">)</span>
         
         <span class="c1">## 待办：用 pprint 库来输出第一条骑行记录。 ##</span>
         <span class="c1">## 见 https://docs.python.org/3/library/pprint.html     ##</span>
@@ -11983,7 +11983,7 @@ OrderedDict([(&#39;Duration (ms)&#39;, &#39;427387&#39;),
     <span class="c1"># 请在此处写出代码</span>
     <span class="k">if</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;NYC&#39;</span> <span class="ow">or</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">:</span>
         <span class="n">duration</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">datum</span><span class="p">[</span><span class="s2">&quot;tripduration&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">60</span>
-    <span class="k">elif</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;Washington&#39;</span><span class="p">:</span>
+    <span class="k">else</span><span class="p">:</span>
         <span class="n">duration</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">datum</span><span class="p">[</span><span class="s2">&quot;Duration (ms)&quot;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">60000</span>
     
     <span class="k">return</span> <span class="n">duration</span>
@@ -12035,7 +12035,7 @@ OrderedDict([(&#39;Duration (ms)&#39;, &#39;427387&#39;),
         <span class="n">month</span> <span class="o">=</span> <span class="n">struct_time</span><span class="o">.</span><span class="n">month</span>
         <span class="n">hour</span> <span class="o">=</span> <span class="n">struct_time</span><span class="o">.</span><span class="n">hour</span>
         <span class="n">day_of_week</span> <span class="o">=</span> <span class="n">struct_time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%A&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;Washington&#39;</span><span class="p">:</span>
+    <span class="k">else</span><span class="p">:</span>
         <span class="n">struct_time</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">datum</span><span class="p">[</span><span class="s2">&quot;Start date&quot;</span><span class="p">],</span> <span class="s2">&quot;%m/</span><span class="si">%d</span><span class="s2">/%Y %H:%M&quot;</span><span class="p">)</span>
         <span class="n">month</span> <span class="o">=</span> <span class="n">struct_time</span><span class="o">.</span><span class="n">month</span>
         <span class="n">hour</span> <span class="o">=</span> <span class="n">struct_time</span><span class="o">.</span><span class="n">hour</span>
@@ -12076,13 +12076,12 @@ OrderedDict([(&#39;Duration (ms)&#39;, &#39;427387&#39;),
 <span class="sd">    &quot;&quot;&quot;</span>
     
     <span class="c1"># 请在此处写出代码</span>
+    <span class="n">user_type</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Registered&quot;</span><span class="p">:</span><span class="s2">&quot;Subscriber&quot;</span><span class="p">,</span> <span class="s2">&quot;Casual&quot;</span><span class="p">:</span><span class="s2">&quot;Customer&quot;</span><span class="p">}</span>
+    
     <span class="k">if</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;NYC&#39;</span> <span class="ow">or</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;Chicago&#39;</span><span class="p">:</span>
         <span class="n">user_type</span> <span class="o">=</span> <span class="n">datum</span><span class="p">[</span><span class="s2">&quot;usertype&quot;</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="n">city</span> <span class="o">==</span> <span class="s1">&#39;Washington&#39;</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">datum</span><span class="p">[</span><span class="s2">&quot;Member Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Registered&quot;</span><span class="p">:</span>
-            <span class="n">user_type</span> <span class="o">=</span> <span class="s2">&quot;Subscriber&quot;</span>
-        <span class="k">elif</span> <span class="n">datum</span><span class="p">[</span><span class="s2">&quot;Member Type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Casual&quot;</span><span class="p">:</span>
-            <span class="n">user_type</span> <span class="o">=</span> <span class="s2">&quot;Customer&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">user_type</span> <span class="o">=</span> <span class="n">user_type</span><span class="p">[</span><span class="n">datum</span><span class="p">[</span><span class="s2">&quot;Member Type&quot;</span><span class="p">]]</span>
     
     <span class="k">return</span> <span class="n">user_type</span>
 
@@ -12244,31 +12243,29 @@ OrderedDict([(&#39;duration&#39;, &#39;13.983333333333333&#39;),
 <div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">number_of_trips</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 从文件获取骑行数据 </span>
+<span class="k">def</span> <span class="nf">get_data_list</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    本函数会读取一个骑行数据文件，分别报告</span>
-<span class="sd">    会员、散客和所有系统用户的骑行次数。</span>
+<span class="sd">    本函数会读取一个骑行数据文件，报告</span>
+<span class="sd">    每次的骑行时间。</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
         <span class="c1"># 设置 csv reader 对象</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f_in</span><span class="p">)</span>
         
-        <span class="c1"># 初始化计数变量</span>
-        <span class="n">n_subscribers</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">n_customers</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="c1"># 初始化数据队列</span>
+        <span class="n">n_data_list</span> <span class="o">=</span> <span class="p">[]</span>
         
         <span class="c1"># 计算骑行类型</span>
         <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;user_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Subscriber&#39;</span><span class="p">:</span>
-                <span class="n">n_subscribers</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">n_customers</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">n_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
         
-        <span class="c1"># 统计骑行总次数</span>
-        <span class="n">n_total</span> <span class="o">=</span> <span class="n">n_subscribers</span> <span class="o">+</span> <span class="n">n_customers</span>
-        
-        <span class="c1"># 将结果作为数组返回出来</span>
-        <span class="k">return</span><span class="p">(</span><span class="n">n_subscribers</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">,</span> <span class="n">n_total</span><span class="p">)</span>
+        <span class="c1"># 将结果返回出来</span>
+        <span class="k">return</span> <span class="n">n_data_list</span>
+    
+<span class="n">ncy_data</span> <span class="o">=</span> <span class="n">get_data_list</span><span class="p">(</span><span class="s1">&#39;./data/NYC-2016-Summary.csv&#39;</span><span class="p">)</span>
+<span class="n">chicago_data</span> <span class="o">=</span> <span class="n">get_data_list</span><span class="p">(</span><span class="s1">&#39;./data/Chicago-2016-Summary.csv&#39;</span><span class="p">)</span>
+<span class="n">washington_data</span> <span class="o">=</span> <span class="n">get_data_list</span><span class="p">(</span><span class="s1">&#39;./data/Washington-2016-Summary.csv&#39;</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12281,18 +12278,49 @@ OrderedDict([(&#39;duration&#39;, &#39;13.983333333333333&#39;),
 <div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">number_of_trips</span><span class="p">(</span><span class="n">datalist</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    本函数会读取一个骑行数据文件，分别报告</span>
+<span class="sd">    会员、散客和所有系统用户的骑行次数。</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># 初始化计数变量</span>
+    <span class="n">n_subscribers</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">n_customers</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># 计算骑行类型</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">datalist</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;user_type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Subscriber&#39;</span><span class="p">:</span>
+            <span class="n">n_subscribers</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">n_customers</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># 统计骑行总次数</span>
+    <span class="n">n_total</span> <span class="o">=</span> <span class="n">n_subscribers</span> <span class="o">+</span> <span class="n">n_customers</span>
+
+    <span class="c1"># 将结果作为数组返回出来</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">n_subscribers</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">,</span> <span class="n">n_total</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 修改此框及上框，回答问题 4a。##</span>
 <span class="c1">## 记得运行你在问题 3 中创建的数据文件清理函数。     ##</span>
 
-<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;./data/Chicago-2016-Summary.csv&#39;</span>
-<span class="n">n_subscribers</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">,</span> <span class="n">n_total</span> <span class="o">=</span> <span class="n">number_of_trips</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chicago total </span><span class="si">%d</span><span class="s2">, subscribers </span><span class="si">%f%%</span><span class="s2">, customers </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_total</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_subscribers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">)),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_customers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">))))</span>
-<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;./data/NYC-2016-Summary.csv&#39;</span>
-<span class="n">n_subscribers</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">,</span> <span class="n">n_total</span> <span class="o">=</span> <span class="n">number_of_trips</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NYC total </span><span class="si">%d</span><span class="s2">, subscribers </span><span class="si">%f%%</span><span class="s2">, customers </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_total</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_subscribers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">)),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_customers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">))))</span>
-<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;./data/Washington-2016-Summary.csv&#39;</span>
-<span class="n">n_subscribers</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">,</span> <span class="n">n_total</span> <span class="o">=</span> <span class="n">number_of_trips</span><span class="p">(</span><span class="n">data_file</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Washington total </span><span class="si">%d</span><span class="s2">, subscribers </span><span class="si">%f%%</span><span class="s2">, customers </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n_total</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_subscribers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">)),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_customers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">))))</span>
+<span class="k">def</span> <span class="nf">print_city_trip_num</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">datalist</span><span class="p">):</span>
+    <span class="n">n_subscribers</span><span class="p">,</span> <span class="n">n_customers</span><span class="p">,</span> <span class="n">n_total</span> <span class="o">=</span> <span class="n">number_of_trips</span><span class="p">(</span><span class="n">chicago_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> total </span><span class="si">%d</span><span class="s2">, subscribers </span><span class="si">%f%%</span><span class="s2">, customers </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">n_total</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_subscribers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">)),</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">n_customers</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">n_total</span><span class="p">))))</span>
+
+<span class="n">print_city_trip_num</span><span class="p">(</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="n">chicago_data</span><span class="p">)</span>
+<span class="n">print_city_trip_num</span><span class="p">(</span><span class="s2">&quot;NYC&quot;</span><span class="p">,</span> <span class="n">ncy_data</span><span class="p">)</span>
+<span class="n">print_city_trip_num</span><span class="p">(</span><span class="s2">&quot;Washington&quot;</span><span class="p">,</span> <span class="n">washington_data</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12310,8 +12338,8 @@ OrderedDict([(&#39;duration&#39;, &#39;13.983333333333333&#39;),
 
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Chicago total 72131, subscribers 76.225201%, customers 23.774799%
-NYC total 276798, subscribers 88.835902%, customers 11.164098%
-Washington total 66326, subscribers 78.028224%, customers 21.971776%
+NYC total 72131, subscribers 76.225201%, customers 23.774799%
+Washington total 72131, subscribers 76.225201%, customers 23.774799%
 </pre>
 </div>
 </div>
@@ -12360,41 +12388,6 @@ Washington total 66326, subscribers 78.028224%, customers 21.971776%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 从文件获取骑行数据 </span>
-<span class="k">def</span> <span class="nf">get_data_list</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    本函数会读取一个骑行数据文件，报告</span>
-<span class="sd">    每次的骑行时间。</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f_in</span><span class="p">:</span>
-        <span class="c1"># 设置 csv reader 对象</span>
-        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">f_in</span><span class="p">)</span>
-        
-        <span class="c1"># 初始化数据队列</span>
-        <span class="n">n_data_list</span> <span class="o">=</span> <span class="p">[]</span>
-        
-        <span class="c1"># 计算骑行类型</span>
-        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
-            <span class="n">n_data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-        
-        <span class="c1"># 将结果返回出来</span>
-        <span class="k">return</span> <span class="n">n_data_list</span>
-    
-<span class="n">ncy_data</span> <span class="o">=</span> <span class="n">get_data_list</span><span class="p">(</span><span class="s1">&#39;./data/NYC-2016-Summary.csv&#39;</span><span class="p">)</span>
-<span class="n">chicago_data</span> <span class="o">=</span> <span class="n">get_data_list</span><span class="p">(</span><span class="s1">&#39;./data/Chicago-2016-Summary.csv&#39;</span><span class="p">)</span>
-<span class="n">washington_data</span> <span class="o">=</span> <span class="n">get_data_list</span><span class="p">(</span><span class="s1">&#39;./data/Washington-2016-Summary.csv&#39;</span><span class="p">)</span>
-</pre></div>
-
-</div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 <div class="prompt input_prompt">In&nbsp;[11]:</div>
 <div class="inner_cell">
     <div class="input_area">
@@ -12439,13 +12432,25 @@ Washington total 66326, subscribers 78.028224%, customers 21.971776%
     <span class="n">prop</span> <span class="o">=</span> <span class="n">more_num</span><span class="o">/</span><span class="n">total_num</span>
     
     <span class="k">return</span> <span class="n">ave_time</span><span class="p">,</span> <span class="n">prop</span>
+</pre></div>
 
-<span class="n">ave_time</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="n">average_and_proportion_of_list</span><span class="p">(</span><span class="n">time_list_of_trips</span><span class="p">(</span><span class="n">chicago_data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chicago ave_time </span><span class="si">%d</span><span class="s2">, more than 30 min accounted for </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ave_time</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">prop</span><span class="p">))</span>
-<span class="n">ave_time</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="n">average_and_proportion_of_list</span><span class="p">(</span><span class="n">time_list_of_trips</span><span class="p">(</span><span class="n">ncy_data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NYC ave_time </span><span class="si">%d</span><span class="s2">, more than 30 min accounted for </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ave_time</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">prop</span><span class="p">))</span>
-<span class="n">ave_time</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="n">average_and_proportion_of_list</span><span class="p">(</span><span class="n">time_list_of_trips</span><span class="p">(</span><span class="n">washington_data</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Washington ave_time </span><span class="si">%d</span><span class="s2">, more than 30 min accounted for </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ave_time</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">prop</span><span class="p">))</span>
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_city_trip_time</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">datalist</span><span class="p">):</span>
+    <span class="n">ave_time</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="n">average_and_proportion_of_list</span><span class="p">(</span><span class="n">time_list_of_trips</span><span class="p">(</span><span class="n">datalist</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> ave_time </span><span class="si">%d</span><span class="s2">, more than 30 min accounted for </span><span class="si">%f%%</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">ave_time</span><span class="p">,</span> <span class="mi">100</span><span class="o">*</span><span class="n">prop</span><span class="p">))</span>
+
+<span class="n">print_city_trip_time</span><span class="p">(</span><span class="s2">&quot;Chicago&quot;</span><span class="p">,</span> <span class="n">chicago_data</span><span class="p">)</span>
+<span class="n">print_city_trip_time</span><span class="p">(</span><span class="s2">&quot;NYC&quot;</span><span class="p">,</span> <span class="n">ncy_data</span><span class="p">)</span>
+<span class="n">print_city_trip_time</span><span class="p">(</span><span class="s2">&quot;Washington&quot;</span><span class="p">,</span> <span class="n">washington_data</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12510,7 +12515,7 @@ Washington ave_time 18, more than 30 min accounted for 10.838887%
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[13]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 使用本框及新框来回答问题 4c。##</span>
@@ -12560,17 +12565,28 @@ Washington ave_time 18, more than 30 min accounted for 10.838887%
     <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="n">average_and_proportion_of_list</span><span class="p">(</span><span class="n">subscriber_list</span><span class="p">)</span>
     <span class="n">customer_ave_time</span><span class="p">,</span> <span class="n">prop</span> <span class="o">=</span> <span class="n">average_and_proportion_of_list</span><span class="p">(</span><span class="n">customer_list</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span>
-    
-<span class="k">def</span> <span class="nf">print_msg</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">):</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">print_user_ave_time_msg</span><span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> subscriber user average trip time is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">))</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> customer user average trip time is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">city</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">))</span>
     
 <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span> <span class="o">=</span> <span class="n">city_user_ave_time</span><span class="p">(</span><span class="n">ncy_data</span><span class="p">)</span>
-<span class="n">print_msg</span><span class="p">(</span><span class="s1">&#39;NCY&#39;</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">)</span>
+<span class="n">print_user_ave_time_msg</span><span class="p">(</span><span class="s1">&#39;NCY&#39;</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">)</span>
 <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span> <span class="o">=</span> <span class="n">city_user_ave_time</span><span class="p">(</span><span class="n">chicago_data</span><span class="p">)</span>
-<span class="n">print_msg</span><span class="p">(</span><span class="s1">&#39;Chicago&#39;</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">)</span>
+<span class="n">print_user_ave_time_msg</span><span class="p">(</span><span class="s1">&#39;Chicago&#39;</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">)</span>
 <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span> <span class="o">=</span> <span class="n">city_user_ave_time</span><span class="p">(</span><span class="n">washington_data</span><span class="p">)</span>
-<span class="n">print_msg</span><span class="p">(</span><span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">)</span>
+<span class="n">print_user_ave_time_msg</span><span class="p">(</span><span class="s1">&#39;Washington&#39;</span><span class="p">,</span> <span class="n">subscriber_ave_time</span><span class="p">,</span> <span class="n">customer_ave_time</span><span class="p">)</span>
 </pre></div>
 
 </div>
@@ -12613,7 +12629,7 @@ Washington customer user average trip time is 41
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[15]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># 加载库</span>
@@ -12675,7 +12691,7 @@ Washington customer user average trip time is 41
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[16]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 使用本框及新框来收集所有骑行时长并制成列表。##</span>
@@ -12723,14 +12739,14 @@ Washington customer user average trip time is 41
 <p><strong>问题 5</strong>：用 <code>.hist()</code> 函数的参数来为所选城市的会员骑行时长绘制分布图，并单独为散客做同样的操作。限制统计图的范围，仅绘制骑行时长小于 75 分钟的数据。另外，你可以设置每条柱形之间有五分钟的间隔。在每组数据中，各分布图的峰值分别在哪？你会如何描述每个分布图的形状？</p>
 <p><strong>答案</strong>：
 会员和散客的峰值分别在5~10min和20~25min。
-分布图呈泊松分布形状。</p>
+分布图呈正偏态分布。</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[17]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 使用本框及新框来回答问题 5##</span>
@@ -12814,7 +12830,7 @@ Washington customer user average trip time is 41
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[18]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 对纽约的不同月份骑客量的探索</span>
@@ -12886,7 +12902,7 @@ Washington customer user average trip time is 41
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[17]:</div>
+<div class="prompt input_prompt">In&nbsp;[19]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## 使用本框及新框来继续探索数据集。 ##</span>
@@ -12973,7 +12989,7 @@ Washington customer user average trip time is 41
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[18]:</div>
+<div class="prompt input_prompt">In&nbsp;[20]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">subprocess</span> <span class="k">import</span> <span class="n">call</span>
@@ -12990,7 +13006,7 @@ Washington customer user average trip time is 41
 
 <div class="output_area">
 
-<div class="prompt output_prompt">Out[18]:</div>
+<div class="prompt output_prompt">Out[20]:</div>
 
 
 
